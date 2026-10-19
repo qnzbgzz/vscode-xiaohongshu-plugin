@@ -10,7 +10,9 @@ A VS Code extension that brings Xiaohongshu (REDnote) into your editor, making i
 注：具体功能以当前版本的实际实现为准。
 
 📸 效果展示
-<img width="820" height="967" alt="image" src="https://github.com/user-attachments/assets/8384df34-7a13-47cd-9de1-951eb1b2e728" />
+
+<img width="366" height="810" alt="image" src="https://github.com/user-attachments/assets/48bdd764-5c2f-4ef3-87c1-7e6a10ddf12c" />
+
 
 🚀 安装方式
 在 VS Code 中打开“扩展”视图，选择“从 VSIX 安装…”，选中项目生成的 `xhs-reader-0.0.2.vsix`，重载窗口后点击活动栏中的“阅读”。
