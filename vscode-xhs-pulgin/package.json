@@ -1,0 +1,132 @@
+{
+  "name": "xhs-reader",
+  "displayName": "小红书阅读器",
+  "description": "在 VS Code 中只读浏览小红书内容。",
+  "version": "0.0.2",
+  "publisher": "local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "os": [
+    "win32"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onView:reader.explore",
+    "onView:reader.detail",
+    "onCommand:reader.login",
+    "onCommand:reader.logout",
+    "onCommand:reader.refresh",
+    "onCommand:reader.search",
+    "onCommand:reader.showRecommend",
+    "onCommand:reader.showTrending",
+    "onCommand:reader.loadMore",
+    "onCommand:reader.openNote"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "reader.login",
+        "title": "连接账号",
+        "category": "阅读"
+      },
+      {
+        "command": "reader.logout",
+        "title": "退出账号",
+        "category": "阅读"
+      },
+      {
+        "command": "reader.refresh",
+        "title": "刷新",
+        "category": "阅读",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "reader.search",
+        "title": "搜索",
+        "category": "阅读",
+        "icon": "$(search)"
+      },
+      {
+        "command": "reader.showRecommend",
+        "title": "推荐",
+        "category": "阅读"
+      },
+      {
+        "command": "reader.showTrending",
+        "title": "热门",
+        "category": "阅读"
+      },
+      {
+        "command": "reader.loadMore",
+        "title": "加载更多",
+        "category": "阅读"
+      },
+      {
+        "command": "reader.openNote",
+        "title": "打开帖子",
+        "category": "阅读"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "reader",
+          "title": "阅读",
+          "icon": "resources/reader.svg"
+        }
+      ]
+    },
+    "views": {
+      "reader": [
+        {
+          "id": "reader.explore",
+          "name": "浏览"
+        },
+        {
+          "id": "reader.detail",
+          "name": "README.md",
+          "type": "webview"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "reader.search",
+          "when": "view == reader.explore",
+          "group": "navigation@1"
+        },
+        {
+          "command": "reader.refresh",
+          "when": "view == reader.explore",
+          "group": "navigation@2"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "node esbuild.mjs",
+    "check": "tsc --noEmit && eslint .",
+    "package": "npm run build && vsce package --allow-missing-repository"
+  },
+  "dependencies": {
+    "pako": "1.0.11",
+    "playwright-core": "1.49.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "@types/node": "^18.19.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.6.0",
+    "esbuild": "^0.25.9",
+    "eslint": "^9.35.0",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.42.0"
+  }
+}
